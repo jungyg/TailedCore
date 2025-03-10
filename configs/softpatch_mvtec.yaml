@@ -1,0 +1,19 @@
+
+seed: 0
+
+data:
+  resize: 256
+  imagesize: 224
+  inputsize: 224
+
+model:
+  backbone_names: ["wideresnet50"]
+  layers_to_extract: ["layer2", "layer3"]
+
+  coreset_model_name: "softpatch"
+
+  greedy_ratio: 0.1
+  greedy_proj_dim: 128
+
+  faiss_k_neighbor: 1
+
