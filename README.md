@@ -1,10 +1,71 @@
-# README
+## 📢 **News and Updates**
 
-## Installation
+- ✅ Mar 10, 2025. TailedCore **code** released.
+
+<div align="center">
+
+# [CVPR 2025] TailedCore : Few-Shot Sampling for Unsupervised Long-Tail Noisy Anomaly Detection
+
+### This is the official repository for [TailedCore](https://google.com) (CVPR 2025).
+
+Yoon Gyo Jung*, Jaewoo Park*, Jaeho Yoon*, Kuan-Chuan Peng,
+ Wonchul Kim, Andrew Beng Jin Teoh, Octavia Camps
+
+*: Equal Contribution
+
+
+
+</div>
+
+<div align="center">
+
+<img src="./figs/neu.png" height="100" alt="" align="center" style="margin-right: 10px;" />
+<img src="./figs/aiv.png" height="100" alt="" align="center" style="margin-right: 10px;" />
+<img src="./figs/yonsei.png" height="100" alt="" align="center" style="margin-right: 10px;" />
+<img src="./figs/merl.png" height="100" alt="" align="center" style="margin-right: 10px;" />
+
+</div>
+
+
+TL;DR: We suggest a novel practical challenging anomaly detection task, noisy long-tailed anomaly detection where tail classes are unknown and head classes are contaminated. We suggest TailSampler, which first tail classes with class size estimation and denoise head classes seprately.
+
+
+
+<div align="center">
+  <img src="figs/bias.png" width="650px" height="300px">
+</div>
+
+**Performance comparison with baselines**
+
+<div align="center">
+  <img src="figs/method.png" width="800px" height="300px">
+</div>
+
+**Pipeine of TailedCore**
+
+<div align="center">
+  <img src="figs/dillema.png" width="650px" height="300px">
+</div>
+
+**Noise discriminative models remove tail classes(left) while greedy sampling samples both tail and noise**
+
+<div align="center">
+  <img src="figs/ablation_noise_ratio.png" width="650px" height="300px">
+</div>
+
+**Ablation with noise ratio comparing with baselines**
+
+
+
+## **Getting Started**
+
+### 🪒 *Installation*
 
 Install the required packages with the command below
 
 bash install_packages.sh
+
+### 💾 *Dataset Preparation*
 
 ## Convert ViSA to MVTecAD format
 
@@ -36,15 +97,21 @@ After generating the noisy long-tailed dataset, run the code to train model. The
 python main.py --dataset --mvtec --noisy_lt_dataset paretno_nr0.1_seed42 --config tailedcore_mvtec
 ```
 
-## Model Structure
+## Code Structure
 
 Refer the files
-
-./src/coreset_model.py for the code of each models
-
-./src/sampler.py for the code of each samplers
+[`coreset_model`](./src/coreset_model.py) for the code of each models
+[`sampler`](./src/sampler.py) for the code of each samplers
 
 which are the core codes of our method.
+
+
+## **Citations**
+
+**The following is a BibTeX reference:**
+
+``` latex
+```
 
 ## Acknowledgement
 
