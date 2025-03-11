@@ -9,7 +9,8 @@
 ### This is the official repository for [TailedCore](https://google.com) (CVPR 2025).
 
 Yoon Gyo Jung*, Jaewoo Park*, Jaeho Yoon*, Kuan-Chuan Peng,
- Wonchul Kim, Andrew Beng Jin Teoh, Octavia Camps
+
+Wonchul Kim, Andrew Beng Jin Teoh, Octavia Camps
 
 *: Equal Contribution
 
