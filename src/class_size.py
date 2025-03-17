@@ -70,10 +70,8 @@ def predict_num_samples_per_class(
 
     num_samples_per_class = []
 
-    ## durl
     class_sizes_sorted = class_sizes_sorted.squeeze()
 
-    ## durl answp
     while len(class_sizes_sorted) > 0:
         if len(class_sizes_sorted) < class_sizes_sorted[0]:
             num_samples_per_class[-1] += len(class_sizes_sorted)

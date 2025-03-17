@@ -79,7 +79,15 @@ python convert_visa_to_mvtec_format.py
 
 ## Prepare noisy long-tailed dataset
 
-The following code generates a noisy long-tailed dataset of MVTecAD and converted ViSA(converting visa like MVTecAD dataset format is required). Specify the arguments the arguments to acquire the noisy long-tailed dataset. If "random_tail" is False, "tail_classes" should be specified with the list of tail classes and the number of "tail_classes" should be equal to int(num_classes * "tail_ratio"). Below are a few examples
+The following code generates a noisy long-tailed dataset of MVTecAD and converted ViSA(converting visa like MVTecAD dataset format is required). First, make a directory "./data" in the repository and generate a symlink or move the dataset of MVTecAD and VisA into "./data" with
+
+```
+mkdir ./data
+ln -s {MVTecAD_ABS_PATH} {PROJECT DIR}/data
+```
+
+Next, specify the arguments the arguments to acquire the noisy long-tailed dataset. If "random_tail" is False, "tail_classes" should be specified with the list of tail classes and the number of "tail_classes" should be equal to int(num_classes * "tail_ratio"). Below are a few examples
+
 
 ```
 python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --random_tail True
@@ -89,6 +97,17 @@ python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type k4 --random_
 python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --random_tail False --tail_classes cable capsule wood zipper bottle transistor grid screw hazelnut
 
 ```
+
+Below are the datasets we have used for the experiments
+```
+python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --random_tail True --seed 101
+python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type k4 --random_tail True
+
+python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type k4 --random_tail False --tail_classes cable capsule wood zipper bottle transistor grid screw hazelnut
+python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --random_tail False --tail_classes cable capsule wood zipper bottle transistor grid screw hazelnut
+
+```
+
 
 ## Train/test
 

@@ -16,7 +16,6 @@ import torchvision.transforms.functional as TF
 
 from .feature_embedder import FeatureEmbedder
 from .sampler import (
-    IncrementalGreedyCoresetSampler,
     GreedyCoresetSampler,
     TailSampler,
     AdaptiveTailSampler,
@@ -278,7 +277,6 @@ class TailedCore(BaseCore):
 
         return coreset_features
 
-    ## durl measure tail class sampling
     def _get_coreset_tail(self, features, embeddings, trainloader):
 
         h, w = self.feature_map_shape[0], self.feature_map_shape[1]
@@ -317,7 +315,6 @@ class TailedCore(BaseCore):
         else:
             raise ValueError()
 
-    ## durl perturbed tail class data augmentation
     def _get_tail_augmented_features_rotflip(self, trainloader: DataLoader, tail_indices: torch.Tensor, rot_degree=15, flip=False):
         self.feature_embedder.eval()
 
@@ -447,7 +444,6 @@ class TailedCore(BaseCore):
 
         return features
     
-    ## durl measrue head class sampling
     def _get_coreset_head(self, features):
         head_features, _ = self.noise_discriminator.run(
             features, self.feature_map_shape[:2]

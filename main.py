@@ -32,7 +32,7 @@ def main(args):
         _test_dataloader = _dataloaders["test"]
 
         save_train_dir_path = os.path.join(
-            "./results", args.data_sub_path, args.config_name, _train_dataloader.name
+            "./results", args.data_sub_path, args.config, _train_dataloader.name
         )
         save_test_dir_path = os.path.join(save_train_dir_path, _test_dataloader.name)
         save_outputs_path = os.path.join(save_test_dir_path, "outputs.pkl")
@@ -143,7 +143,7 @@ def main(args):
 
     save_log_root = os.path.join(save_train_dir_path, 'metrics')
     os.makedirs(save_log_root, exist_ok=True)
-    save_log_path = os.path.join(save_log_root, f'performance_{args.data_sub_path}_{args.config_name}.csv')
+    save_log_path = os.path.join(save_log_root, f'performance_{args.data_sub_path}_{args.config}.csv')
     result_df = utils.save_dicts_to_csv(result_list, save_log_path)
 
     performance = result_df["image_auroc"].mean()
@@ -157,11 +157,7 @@ def parse_args():
     parser.add_argument("--data_root_path",type=str,default="./data",)
     parser.add_argument("--dataset", type=str, default="mvtec")
     parser.add_argument("--noisy_lt_dataset", type=str, default="pareto_nr0.1_seed42")
-    parser.add_argument("--config_name", type=str, default="tailedcore_mvtec")
-    parser.add_argument("--step_k", type=int, default=4)
-    parser.add_argument("--noise_ratio", type=float, default=0.1)
-    parser.add_argument("--tail_ratio", type=float, default=0.6, 
-                        help='ratio of tail classes (only for step_k4 and step_k1)')
+    parser.add_argument("--config", type=str, default="tailedcore_mvtec")
 
     parser.add_argument("--gpu", type=int, default=0)
     parser.add_argument("--seed", type=int, default=42)
@@ -176,7 +172,7 @@ def parse_args():
     args = parser.parse_args()
 
     args.config = utils.load_config_args(
-        os.path.join("./configs", args.config_name + ".yaml")
+        os.path.join("./configs", args.config + ".yaml")
     )
 
     args.data_sub_path = f'{args.dataset}_{args.noisy_lt_dataset}'
