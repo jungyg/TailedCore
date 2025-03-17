@@ -813,6 +813,7 @@ def get_args():
                         help="Copy files. If false, then symlink")
     parser.add_argument("--random_tail", type=str2bool, default=True, help="")    
     parser.add_argument('--tail_classes', nargs='+', help='list of tail classes')
+    parser.add_argument("--data_config", type=str, default=None, help="specify data config to load")
     args = parser.parse_args()
 
     if not args.random_tail:
@@ -849,10 +850,16 @@ def main(args):
 def make_data(args, source_dir, target_dir, tail_classes):
 
     set_seed(args.seed)
-    data_config_path = (
-        f"{os.path.join('./data_configs',  os.path.basename(target_dir))}.pkl"
-    )
 
+    # if data config pkl exists and specified, load from data config
+    if args.data_config:
+        data_config_path = os.path.join('./data_configs', f'{args.data_config}.pkl')
+        assert os.path.exists(data_config_path)
+    else:
+        data_config_path = (
+            f"{os.path.join('./data_configs',  os.path.basename(target_dir))}.pkl"
+        )
+    # if data config exists and not specified
     if os.path.exists(data_config_path):
         tailed_files, noisy_files = _load_data_config(data_config_path)
     elif os.path.exists(target_dir):

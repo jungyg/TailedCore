@@ -14,8 +14,6 @@ Wonchul Kim, Andrew Beng Jin Teoh, Octavia Camps
 
 *: Equal Contribution
 
-
-
 </div>
 
 <div align="center">
@@ -27,10 +25,7 @@ Wonchul Kim, Andrew Beng Jin Teoh, Octavia Camps
 
 </div>
 
-
 TL;DR: We suggest a novel practical challenging anomaly detection task, noisy long-tailed anomaly detection where tail classes are unknown and head classes are contaminated. We suggest TailSampler, which first tail classes with class size estimation and denoise head classes seprately.
-
-
 
 <div align="center">
   <img src="figs/bias.png" width="650px" height="300px">
@@ -55,8 +50,6 @@ TL;DR: We suggest a novel practical challenging anomaly detection task, noisy lo
 </div>
 
 **Ablation with noise ratio comparing with baselines**
-
-
 
 ## **Getting Started**
 
@@ -83,11 +76,11 @@ The following code generates a noisy long-tailed dataset of MVTecAD and converte
 
 ```
 mkdir ./data
-ln -s {MVTecAD_ABS_PATH} {PROJECT DIR}/data
+ln -s {MVTecAD_ABS_DIR} {PROJECT_ABS_DIR}/data/mvtec
+ln -s {VisA_ABS_DIR} {PROJECT_ABS_DIR}/data/visa
 ```
 
 Next, specify the arguments the arguments to acquire the noisy long-tailed dataset. If "random_tail" is False, "tail_classes" should be specified with the list of tail classes and the number of "tail_classes" should be equal to int(num_classes * "tail_ratio"). Below are a few examples
-
 
 ```
 python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --random_tail True
@@ -98,16 +91,11 @@ python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --ran
 
 ```
 
-Below are the datasets we have used for the experiments
-```
-python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --random_tail True --seed 101
-python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type k4 --random_tail True
-
-python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type k4 --random_tail False --tail_classes cable capsule wood zipper bottle transistor grid screw hazelnut
-python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --random_tail False --tail_classes cable capsule wood zipper bottle transistor grid screw hazelnut
+We have included the dataset configs for our experiments in data_configs. To reproduce, run codes
 
 ```
-
+bash generate_dataset.sh
+```
 
 ## Train/test
 
@@ -125,12 +113,12 @@ Refer the files
 
 which are the core codes of our method.
 
-
 ## **Citations**
 
 **The following is a BibTeX reference:**
 
-``` latex
+```latex
+
 ```
 
 ## Acknowledgement
