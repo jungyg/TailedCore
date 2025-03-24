@@ -14,6 +14,8 @@ Wonchul Kim, Andrew Beng Jin Teoh, Octavia Camps
 
 *: Equal Contribution
 
+[Project Page](https://jungyg.github.io/TailedCore_site)
+
 </div>
 
 <div align="center">

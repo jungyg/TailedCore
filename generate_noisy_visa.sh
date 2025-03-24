@@ -7,13 +7,8 @@ seeds=(
 )
 
 for seed in "${seeds[@]}"; do
-    python generate_noisy_tailed_dataset.py --data_config "mvtec_pareto_random_nr10_seed${seed}" 
-    python generate_noisy_tailed_dataset.py --data_config "mvtec_step_random_nr10_tk4_tr60_seed${seed}" 
-    python generate_noisy_tailed_dataset.py --data_config "mvtec_step_random_nr10_tk1_tr60_seed${seed}" 
-
     python generate_noisy_tailed_dataset.py --data_config "visa_pareto_random_nr05_seed${seed}" 
     python generate_noisy_tailed_dataset.py --data_config "visa_step_random_nr05_tk4_tr60_seed${seed}" 
     python generate_noisy_tailed_dataset.py --data_config "visa_step_random_nr05_tk1_tr60_seed${seed}" 
-
 done
 
