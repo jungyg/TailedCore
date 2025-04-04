@@ -120,14 +120,11 @@ which are the core codes of our method.
 **The following is a BibTeX reference:**
 
 ```latex
-@misc{jung2025tailedcorefewshotsamplingunsupervised,
-      title={TailedCore: Few-Shot Sampling for Unsupervised Long-Tail Noisy Anomaly Detection}, 
-      author={Yoon Gyo Jung and Jaewoo Park and Jaeho Yoon and Kuan-Chuan Peng and Wonchul Kim and Andrew Beng Jin Teoh and Octavia Camps},
-      year={2025},
-      eprint={2504.02775},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2504.02775}, 
+@inproceedings{jung2025tailedcore,
+  title={{TailedCore}: Few-Shot Sampling for Unsupervised Long-Tail Noisy Anomaly Detection},
+  author={Yoon Gyo Jung and Jaewoo Park and Jaeho Yoon and Kuan-Chuan Peng and Wonchul Kim and Andrew Beng Jin Teoh and Octavia Camps},
+  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2025}
 }
 ```
 
