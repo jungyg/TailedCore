@@ -6,7 +6,7 @@
 
 # [CVPR 2025] TailedCore : Few-Shot Sampling for Unsupervised Long-Tail Noisy Anomaly Detection
 
-### This is the official repository for [TailedCore](https://google.com) (CVPR 2025).
+### This is the official repository for [TailedCore](https://arxiv.org/abs/2504.02775) (CVPR 2025).
 
 Yoon Gyo Jung*, Jaewoo Park*, Jaeho Yoon*, Kuan-Chuan Peng,
 
@@ -120,7 +120,15 @@ which are the core codes of our method.
 **The following is a BibTeX reference:**
 
 ```latex
-
+@misc{jung2025tailedcorefewshotsamplingunsupervised,
+      title={TailedCore: Few-Shot Sampling for Unsupervised Long-Tail Noisy Anomaly Detection}, 
+      author={Yoon Gyo Jung and Jaewoo Park and Jaeho Yoon and Kuan-Chuan Peng and Wonchul Kim and Andrew Beng Jin Teoh and Octavia Camps},
+      year={2025},
+      eprint={2504.02775},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2504.02775}, 
+}
 ```
 
 ## Acknowledgement
