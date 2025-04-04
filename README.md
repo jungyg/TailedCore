@@ -124,6 +124,7 @@ which are the core codes of our method.
   title={{TailedCore}: Few-Shot Sampling for Unsupervised Long-Tail Noisy Anomaly Detection},
   author={Yoon Gyo Jung and Jaewoo Park and Jaeho Yoon and Kuan-Chuan Peng and Wonchul Kim and Andrew Beng Jin Teoh and Octavia Camps},
   booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  url={https://arxiv.org/abs/2504.02775},
   year={2025}
 }
 ```
