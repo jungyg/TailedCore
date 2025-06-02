@@ -11,8 +11,7 @@ def restructure_visa():
     target_dir = os.path.join(TARGET_ROOT, "visa_")
 
     os.makedirs(target_dir, exist_ok = True)
-
-    with open(os.path.join(source_dir, "split_csv", "1cls.csv")) as file:
+    with open("./data/split_csv/1cls.csv") as file:
         csvreader = csv.reader(file)
         header = next(csvreader)
 

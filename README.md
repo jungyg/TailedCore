@@ -63,26 +63,31 @@ bash install_packages.sh
 
 ### 💾 *Dataset Preparation*
 
-## Convert ViSA to MVTecAD format
-
-The following code converts ViSA dataset to MVTecAD format. Specify the source path (where original ViSA datsaet is located), and target path (where to save the converted ViSA dataset) and the `split_csv/1cls.csv` directory in the code.
-
-```
-python convert_visa_to_mvtec_format.py
-
-```
-
 ## Prepare noisy long-tailed dataset
 
-The following code generates a noisy long-tailed dataset of MVTecAD and converted ViSA(converting visa like MVTecAD dataset format is required). First, make a directory "./data" in the repository and generate a symlink or move the dataset of MVTecAD and VisA into `./data` with
+The following code generates a noisy long-tailed dataset of MVTecAD and converted VisA(converting visa like MVTecAD dataset format is required). First, make a symlink of MVTecAD and VisA into `./data` with
 
 ```
-mkdir ./data
 ln -s {MVTecAD_ABS_DIR} {PROJECT_ABS_DIR}/data/mvtec
 ln -s {VisA_ABS_DIR} {PROJECT_ABS_DIR}/data/visa
 ```
 
-Next, specify the arguments the arguments to acquire the noisy long-tailed dataset. If `random_tail` is False, `tail_classes` should be specified with the list of tail classes and the number of `tail_classes` should be equal to int(num_classes * `tail_ratio`). Below are a few examples
+## Convert VisA to MVTecAD format
+The following code converts VisA dataset to MVTecAD format. Specify the source path (where original VisA datsaet is located), and target path (where to save the converted VisA dataset). Default source directory is `./data/visa` and target directory is `./data/visa_`
+
+```
+python convert_visa_to_mvtec_format.py
+```
+
+After converting VisA to MVTecAD format, remove the symlink in the previous step and change the name of the converted directory to `./data/visa` with
+
+```
+rm {PROJECT_ABS_DIR}/data/visa
+mv ./data/visa_ ./data/visa
+```
+
+
+Next, specify the arguments to acquire the noisy long-tailed dataset. If `random_tail` is False, `tail_classes` should be specified with the list of tail classes and the number of `tail_classes` should be equal to int(num_classes * `tail_ratio`). Below are a few examples
 
 ```
 python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --random_tail True
@@ -93,7 +98,7 @@ python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --ran
 
 ```
 
-We have included the dataset configs for our experiments in `./data_configs`. To reproduce, run codes
+The dataset configs for our experiments can be found in `./data_configs`. To reproduce, run codes
 
 ```
 bash generate_dataset.sh
