@@ -61,17 +61,47 @@ Install the required packages with the command below
 
 bash install_packages.sh
 
-## 💾 *Dataset Preparation*
+### 💾 *Dataset Preparation*
 
-### Noisy Long-Tail MVTecAD
+## Prepare noisy long-tailed dataset
+
+The following code generates a noisy long-tailed dataset of MVTecAD and converted VisA(converting visa like MVTecAD dataset format is required). First, make a symlink of MVTecAD and VisA into `./data` with
+
+```
+ln -s {MVTecAD_ABS_DIR} {PROJECT_ABS_DIR}/data/mvtec
+ln -s {VisA_ABS_DIR} {PROJECT_ABS_DIR}/data/visa
+```
+
+## Convert VisA to MVTecAD format
+The following code converts VisA dataset to MVTecAD format. Specify the source path (where original VisA datsaet is located), and target path (where to save the converted VisA dataset). Default source directory is `./data/visa` and target directory is `./data/visa_`
+
+```
+python convert_visa_to_mvtec_format.py
+```
+
+After converting VisA to MVTecAD format, remove the symlink in the previous step and change the name of the converted directory to `./data/visa` with
+
 
 Download MVTecAD dataset from [the link](https://www.mvtec.com/company/research/datasets/mvtec-ad/downloads), and place it at, for example, `./datasets/mvtecad`. Then run the following
 ```
-bash make_all_mvtecad_nlt.sh
+rm {PROJECT_ABS_DIR}/data/visa
+mv ./data/visa_ ./data/visa
 ```
 
-### Noisy Long-Tail VisA
-Download VisA dataset from [the link](https://amazon-visual-anomaly.s3.us-west-2.amazonaws.com/VisA_20220922.tar), and place it at, for example, `./datasets/visa`. Then run the following
+
+Next, specify the arguments to acquire the noisy long-tailed dataset. If `random_tail` is False, `tail_classes` should be specified with the list of tail classes and the number of `tail_classes` should be equal to int(num_classes * `tail_ratio`). Below are a few examples
+
+```
+python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --random_tail True
+python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type k4 --random_tail True
+
+python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type k4 --random_tail False --tail_classes cable capsule wood zipper bottle transistor grid screw hazelnut
+python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --random_tail False --tail_classes cable capsule wood zipper bottle transistor grid screw hazelnut
+
+```
+
+The dataset configs for our experiments can be found in `./data_configs`. To reproduce, run codes
+
 ```
 bash make_all_mvtecad_nlt.sh
 ```

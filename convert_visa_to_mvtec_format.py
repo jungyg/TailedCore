@@ -29,12 +29,10 @@ def restructure_visa(source_dir: str, target_dir: str, use_symlink: bool = True)
         reader = csv.reader(file)
         _ = next(reader)  # skip header line
 
-        for _, row in tqdm(enumerate(reader), desc="Restructuring"):
-            class_, split_, label, img_rel_path, mask_rel_path = row
-
-            # File names
-            img_name = os.path.basename(img_rel_path)
-            mask_name = os.path.basename(mask_rel_path) if mask_rel_path else ""
+    os.makedirs(target_dir, exist_ok = True)
+    with open("./data/split_csv/1cls.csv") as file:
+        csvreader = csv.reader(file)
+        header = next(csvreader)
 
             # Map VISA label → folder label
             label_dir = "good" if label == "normal" else "bad"
