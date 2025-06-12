@@ -53,9 +53,9 @@ TL;DR: We suggest a novel practical challenging anomaly detection task, noisy lo
 
 **Ablation with noise ratio comparing with baselines**
 
-## **Getting Started**
 
-### 🪒 *Installation*
+
+## 🪒 *Installation*
 
 Install the required packages with the command below
 
@@ -81,6 +81,8 @@ python convert_visa_to_mvtec_format.py
 
 After converting VisA to MVTecAD format, remove the symlink in the previous step and change the name of the converted directory to `./data/visa` with
 
+
+Download MVTecAD dataset from [the link](https://www.mvtec.com/company/research/datasets/mvtec-ad/downloads), and place it at, for example, `./datasets/mvtecad`. Then run the following
 ```
 rm {PROJECT_ABS_DIR}/data/visa
 mv ./data/visa_ ./data/visa
@@ -101,7 +103,7 @@ python generate_noisy_tailed_dataset.py --dataset mvtec --tail_type pareto --ran
 The dataset configs for our experiments can be found in `./data_configs`. To reproduce, run codes
 
 ```
-bash generate_dataset.sh
+bash make_all_mvtecad_nlt.sh
 ```
 
 ## Train/test
